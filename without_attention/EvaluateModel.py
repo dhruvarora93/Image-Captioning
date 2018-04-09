@@ -155,14 +155,17 @@ print('Dataset: %d' % len(test))
 test_descriptions = load_clean_descriptions('descriptions.txt', test)
 print('Descriptions: test=%d' % len(test_descriptions))
 # photo features
-test_features = load_photo_features('features.pkl', test)
+test_features = load_photo_features('features_inception_v3.pkl', test)
 print('Photos: test=%d' % len(test_features))
 
-filename = 'epochs-archive/model-ep004-loss3.097-val_loss3.504.h5'
+filename = 'h5-models/model-ep008-loss2.863-val_loss3.476.h5'
 if len(sys.argv) >= 2:
 	filename = sys.argv[1]
 
 # load the model
 model = load_model(filename)
+
+
+
 # evaluate model
 evaluate_model(model, test_descriptions, test_features, tokenizer, max_length)

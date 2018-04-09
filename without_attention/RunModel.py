@@ -123,7 +123,7 @@ def create_sequences(tokenizer, max_length, descriptions, photos):
 
 
 # define the captioning model
-def define_model(shapeDim, vocab_size, max_length, lossMethod):
+def define_model(shapeDim, vocab_size, max_length):
 	# feature extractor model
 	inputs1 = Input(shape=(shapeDim,))
 	fe1 = Dropout(0.5)(inputs1)
@@ -141,7 +141,7 @@ def define_model(shapeDim, vocab_size, max_length, lossMethod):
 	# tie it together [image, seq] [word]
 	model = Model(inputs=[inputs1, inputs2], outputs=outputs)
 	# categorical_crossentropy | kullback_leibler_divergence
-	model.compile(loss=lossMethod, optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
+	model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
 	# summarize model
 	print(model.summary())
 	# plot_model(model, to_file='model.png', show_shapes=True)
@@ -150,17 +150,12 @@ def define_model(shapeDim, vocab_size, max_length, lossMethod):
 
 if __name__ == "__main__":
 
-	epochCount, batchSize, shapeDim = 50, 64, 2048
-	features_file, lossMethod = 'features_inception_v3.pkl', 'kullback_leibler_divergence'
-	if len(sys.argv) >= 6:
+	epochCount, batchSize, shapeDim, features_file = 50, 64, 2048, 'features_inception_v3.pkl'
+	if len(sys.argv) >= 5:
 		epochCount = int(sys.argv[1])
 		batchSize = int(sys.argv[2])
 		batchSize = int(sys.argv[3])
 		features_file = sys.argv[4]
-		if sys.argv[5] != lossMethod:
-			lossMethod = 'categorical_crossentropy'
-
-	print(epochCount, batchSize, shapeDim, features_file, lossMethod)
 
 	# train dataset
 
@@ -202,10 +197,10 @@ if __name__ == "__main__":
 	# fit model
 
 	# define the model
-	model = define_model(shapeDim, vocab_size, max_length, lossMethod)
+	model = define_model(shapeDim, vocab_size, max_length)
 
 	# define checkpoint callback
-	filepath = 'model-ep{epoch:03d}-loss{loss:.3f}-val_loss{val_loss:.3f}.h5'
+	filepath = 'h5-models/model-ep{epoch:03d}-loss{loss:.3f}-val_loss{val_loss:.3f}.h5'
 	checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 	# fit model
 	model.fit([X1train, X2train], ytrain, epochs=epochCount, verbose=1, callbacks=[checkpoint], validation_data=([X1test, X2test], ytest), batch_size=batchSize)
