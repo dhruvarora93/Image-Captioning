@@ -9,3 +9,4 @@ without_attention/.idea/
 
 #Ignore files
 *.h5
+*.pkl
