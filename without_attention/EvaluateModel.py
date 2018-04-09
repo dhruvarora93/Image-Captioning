@@ -4,6 +4,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import load_model
 from nltk.translate.bleu_score import corpus_bleu
+import sys
 
 # load doc into memory
 def load_doc(filename):
@@ -157,8 +158,11 @@ print('Descriptions: test=%d' % len(test_descriptions))
 test_features = load_photo_features('features.pkl', test)
 print('Photos: test=%d' % len(test_features))
 
+filename = 'epochs-archive/model-ep004-loss3.097-val_loss3.504.h5'
+if len(sys.argv) >= 2:
+	filename = sys.argv[1]
+
 # load the model
-filename = 'model-ep003-loss3.928-val_loss4.016.h5'
 model = load_model(filename)
 # evaluate model
 evaluate_model(model, test_descriptions, test_features, tokenizer, max_length)

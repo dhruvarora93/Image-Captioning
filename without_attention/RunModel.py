@@ -123,25 +123,25 @@ def create_sequences(tokenizer, max_length, descriptions, photos):
 
 
 # define the captioning model
-def define_model(vocab_size, max_length):
+def define_model(shapeDim, vocab_size, max_length, lossMethod):
 	# feature extractor model
-	inputs1 = Input(shape=(4096,))
+	inputs1 = Input(shape=(shapeDim,))
 	fe1 = Dropout(0.5)(inputs1)
 	fe2 = Dense(256, activation='relu')(fe1)
 	# sequence model
 	inputs2 = Input(shape=(max_length,))
 	se1 = Embedding(vocab_size, 256, mask_zero=True)(inputs2)
 	se2 = Dropout(0.5)(se1)
-	se3 = LSTM(256, return_sequences=True)(se2)
-	# se4 = LSTM(256)(se3)
+	# se3 = LSTM(256, return_sequences=True)(se2)
+	se4 = LSTM(256)(se2)
 	# decoder model
-	decoder1 = add([fe2, se3])
+	decoder1 = add([fe2, se4])
 	decoder2 = Dense(256, activation='relu')(decoder1)
 	outputs = Dense(vocab_size, activation='softmax')(decoder2)
 	# tie it together [image, seq] [word]
 	model = Model(inputs=[inputs1, inputs2], outputs=outputs)
-	# categorical_crossentropy
-	model.compile(loss='kullback_leibler_divergence', optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
+	# categorical_crossentropy | kullback_leibler_divergence
+	model.compile(loss=lossMethod, optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
 	# summarize model
 	print(model.summary())
 	# plot_model(model, to_file='model.png', show_shapes=True)
@@ -149,6 +149,18 @@ def define_model(vocab_size, max_length):
 
 
 if __name__ == "__main__":
+
+	epochCount, batchSize, shapeDim = 50, 64, 2048
+	features_file, lossMethod = 'features_inception_v3.pkl', 'kullback_leibler_divergence'
+	if len(sys.argv) >= 6:
+		epochCount = int(sys.argv[1])
+		batchSize = int(sys.argv[2])
+		batchSize = int(sys.argv[3])
+		features_file = sys.argv[4]
+		if sys.argv[5] != lossMethod:
+			lossMethod = 'categorical_crossentropy'
+
+	print(epochCount, batchSize, shapeDim, features_file, lossMethod)
 
 	# train dataset
 
@@ -160,7 +172,7 @@ if __name__ == "__main__":
 	train_descriptions = load_clean_descriptions('descriptions.txt', train)
 	print('Descriptions: train=%d' % len(train_descriptions))
 	# photo features
-	train_features = load_photo_features('features.pkl', train)
+	train_features = load_photo_features(features_file, train)
 	print('Photos: train=%d' % len(train_features))
 	# prepare tokenizer
 	tokenizer = create_tokenizer(train_descriptions)
@@ -182,7 +194,7 @@ if __name__ == "__main__":
 	test_descriptions = load_clean_descriptions('descriptions.txt', test)
 	print('Descriptions: test=%d' % len(test_descriptions))
 	# photo features
-	test_features = load_photo_features('features.pkl', test)
+	test_features = load_photo_features(features_file, test)
 	print('Photos: test=%d' % len(test_features))
 	# prepare sequences
 	X1test, X2test, ytest = create_sequences(tokenizer, max_length, test_descriptions, test_features)
@@ -190,11 +202,7 @@ if __name__ == "__main__":
 	# fit model
 
 	# define the model
-	model = define_model(vocab_size, max_length)
-	epochCount, batchSize = 50, 64
-	if len(sys.argv) >= 3:
-		epochCount = int(sys.argv[1])
-		batchSize = int(sys.argv[2])
+	model = define_model(shapeDim, vocab_size, max_length, lossMethod)
 
 	# define checkpoint callback
 	filepath = 'model-ep{epoch:03d}-loss{loss:.3f}-val_loss{val_loss:.3f}.h5'

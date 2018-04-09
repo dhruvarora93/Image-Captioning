@@ -41,19 +41,27 @@ def extract_features(directory):
 
 
 # def get_session():
-# 	num_threads, gpu_fraction = 3, 0.3
-# 	gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=gpu_fraction)
+# 	num_threads = 0
+# 	config = tf.ConfigProto()
+# 	config.gpu_options.per_process_gpu_memory_fraction = 0.6
+# 	config.gpu_options.allocator_type = "BFC"
+# 	config.log_device_placement = False
+# 	config.allow_soft_placement = True
 #
-# 	if num_threads:
-# 		return tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, intra_op_parallelism_threads=num_threads))
+# 	if num_threads > 1:
+# 		return tf.Session(config=config, intra_op_parallelism_threads=num_threads)
 # 	else:
-# 		return tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+# 		return tf.Session(config=config)
 
 
 # extract features from all images
 directory = 'Flicker8k_Dataset'
-# set_session(get_session())
+
+# sess = get_session()
+# set_session(sess)
+
 features = extract_features(directory)
 print('Extracted Features: %d' % len(features))
 # save to file
-dump(features, open('features_2.pkl', 'wb'))
+dump(features, open('features_vgg.pkl', 'wb'))
+# sess.close()
