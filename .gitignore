@@ -1,0 +1,9 @@
+# Ignore folders
+epochs-archive/
+Flicker8k_Dataset/
+Flickr8k_text/
+testing/
+venv/
+
+#ignore files
+*.h5
