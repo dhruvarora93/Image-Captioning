@@ -3,7 +3,6 @@ image-captioning-base-dataset/
 without_attention/epochs-archive/
 without_attention/Flicker8k_Dataset/
 without_attention/Flickr8k_text/
-without_attention/testing/
 without_attention/venv/
 without_attention/.idea/
 

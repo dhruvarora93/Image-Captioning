@@ -122,11 +122,14 @@ def evaluate_model(model, descriptions, photos, tokenizer, max_length):
 		references = [d.split() for d in desc_list]
 		actual.append(references)
 		predicted.append(yhat.split())
+
 	# calculate BLEU score
 	print('BLEU-1: %f' % corpus_bleu(actual, predicted, weights=(1.0, 0, 0, 0)))
 	print('BLEU-2: %f' % corpus_bleu(actual, predicted, weights=(0.5, 0.5, 0, 0)))
 	print('BLEU-3: %f' % corpus_bleu(actual, predicted, weights=(0.3, 0.3, 0.3, 0)))
 	print('BLEU-4: %f' % corpus_bleu(actual, predicted, weights=(0.25, 0.25, 0.25, 0.25)))
+
+
 
 # prepare tokenizer on train set
 
@@ -158,14 +161,14 @@ print('Descriptions: test=%d' % len(test_descriptions))
 test_features = load_photo_features('features_inception_v3.pkl', test)
 print('Photos: test=%d' % len(test_features))
 
-filename = 'h5-models/model-ep008-loss2.863-val_loss3.476.h5'
+filename = 'h5-models/model-ep009-loss2.777-val_loss3.473.h5'
 if len(sys.argv) >= 2:
 	filename = sys.argv[1]
 
 # load the model
 model = load_model(filename)
 
-
+bleu1, bleu2, blue3, blue4 = [], [], [], []
 
 # evaluate model
 evaluate_model(model, test_descriptions, test_features, tokenizer, max_length)
