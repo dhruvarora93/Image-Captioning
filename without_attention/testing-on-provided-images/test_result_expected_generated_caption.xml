@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<image>181157221_e12410ef0b.jpg</image>
+<expected>
+    A man and a woman walk their dogs on leashes .
+    Dogs straining on leashes towards each other , as owners walk apart on grass .
+    The two dogs are being pulled away by their owners .
+    Two dogs on leashes straining toward each other while their owners walk away from each other .
+    Two dogs try to reach each other as their human companions pull them in opposite directions by their leashes .</expected>
+<predicted> two dogs play with crosswalk in crosswalk </predicted>
+
+<image>109671650_f7bbc297fa.jpg</image>
+<expected>
+    A boy in yellow shorts is standing on top of a cliff .
+    A boy wearing blue and yellow walking on a cliff edge .
+    A little boy standing high in the air on a rock .
+    A young child is standing alone on some jagged rocks .
+    Child stands near edge of cliff .</expected>
+<predicted> man is standing on rock overlooking the ocean </predicted>
+
+<image>537559285_29be110134.jpg</image>
+<expected>
+    A brown and white Sheltie leaping over a rail .
+    A collie is running through an obstacle course
+    Collie jumping over a training hurdle that is on the grass .
+    Collie making a jump over a yellow hurdle .
+    The dog is leaping over a hurdle .</expected>
+<predicted> dog is jumping over pull </predicted>
+
+<image>239453674_0df7767208.jpg</image>
+<expected>
+    A bald policeman is walking with a German shepherd dog by a metal crowd control barrier .
+    An officer and dog are walking in front of a queue of people .
+    A policeman is next to his German shepherd .
+    A policeman walks away from a gate with a large brown and black dog .
+    The policeman walks with his German shepherd .</expected>
+<predicted> man in black and black is running down the street </predicted>
+
+<image>2021613437_d99731f986.jpg</image>
+<expected>
+    A boy dribbles a basketball in the gymnasium .
+    A boy dribbling a basketball in a gym .
+    A boy wearing a Steve Nash shirt dribbles a basketball on an indoor court .
+    A child in a gray t-shirt is bouncing a basketball on a basketball court .
+    One little boy dribbles his basketball .</expected>
+<predicted> boy in blue shirt is outfit </predicted>
+
+<image>2613920405_e91e6ebd7a.jpg</image>
+<expected>
+    A man leads two cows down the dirt shoulder of a paved road .
+    A man walking his cow down the side of the road .
+    A man walks down the road leading a cow with no rider and another cow with a rider .
+    A man walks with a cow down a dirt sidewalk .
+    Two men pull two cows down the road .</expected>
+<predicted> two mr instruments distance in the walks </predicted>
+
+<image>1305564994_00513f9a5b.jpg</image>
+<expected>
+    A man in street racer armor is examining the tire of another racer 's motorbike .
+    The two racers drove the white bike down the road .
+    Two motorists are riding along on their vehicle that is oddly designed and colored .
+    Two people are in a small race car driving by a green hill .
+    Two people in racing uniforms in a street car .</expected>
+<predicted> two people in black and white stairs are riding on the track </predicted>
+
+<image>1151466868_3bc4d9580b.jpg</image>
+<expected>
+    A small girl spins in the waves in the bright sun .
+    A young girl plays in shallow water .
+    A young girl wears a shirt and shorts as she plays in the ocean 's surf .
+    Girl running through the water near the shore .
+    The little girl splashes through the water .</expected>
+<predicted> girl in just is running through the strip </predicted>
+
+<image>3649307685_60c1294d2a.jpg</image>
+<expected>
+    Two males are playing field hockey , one with a blue stick , one with a gold stick ,
+    Two men are playing in a sports game together .
+    Two men playing a game with some sort of sticks .
+    Two men playing a sport are fighting for a ball .
+    Two players battle for the ball in field hockey .</expected>
+<predicted> two men are playing rugby in the grass </predicted>
+
+<image>58368365_03ed3e5bdf.jpg</image>
+<expected>
+    A man is standing on top of a mountain gazing at the sunset .
+    A man is standing on top of a rock or mountain watching the sunset .
+    A man 's sillouhette at sunset .
+    A man standing in the mountains watching a sunset .
+    A man stands on a hill at dusk .</expected>
+<predicted> man is riding bike on stand </predicted>
+
+<image>130211457_be3f6b335d.jpg</image>
+<expected>
+    A girl in a red and black leotard with white writing is standing next to a man in a cap and a girl in a hot pink and black and white checkered outfit .
+    A man has his arms around two women who are posing for a picture with him .
+    A man with a backpack and cap posing with two girls dressed in tight uniforms .
+    Two blonde models pose with a man under an umbrella .
+    Two woman posing with a guy .</expected>
+<predicted> woman with black hair and white top is riding and mural </predicted>
+
+<image>262570082_6364f58f33.jpg</image>
+<expected>
+    A collie and a black dog with a stick in the water .
+    A dog with a stick follows another dog through the water .
+    A tan dog and a black dog with stick in mouth walking in water .
+    The black dog win the fetching contest as it returns from the water
+    Two dogs in water with one retrieving a stick</expected>
+<predicted> two dogs running through the water </predicted>
+
+<image>221973402_ecb1cd51f1.jpg</image>
+<expected>
+    a black dog chases a boy wearing red and blue .
+    A boy plays with a dog and a Frisbee .
+    A dog with a Frisbee in its mouth chasing a boy in a field .
+    A red shirted boy and a black dog with a Frisbee run in the green grass .
+    The small boy is running in front of a black dog with a Frisbee in its mouth .</expected>
+<predicted> black dog is running through the grass </predicted>
+
+<image>467858872_f3431df682.jpg</image>
+<expected>
+    Two dogs are bending over and looking down into a ditch to investigate .
+    Two dogs are digging under a large rock with their bottoms to the camera .
+    Two dogs are shown with only their tails and backsides as they dig in the dirt .
+    Two dogs are sniffing at the ground with their tails in the air .
+    Two dogs with their heads down a hole and their tails are sticking straight up .</expected>
+<predicted> dog is running through the onto </predicted>
+
+<image>537758332_8beb9cf522.jpg</image>
+<expected>
+    Two children are on a giant inflatable slide .
+    Two children holding hands going down a large inflatable slide .
+    Two girls slide down the air-filled slide .
+    Two kids slide down a giant inflatable slide .
+    Two little girls slide down an inflated slide .</expected>
+<predicted> two children are playing in the puppet </predicted>
